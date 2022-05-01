@@ -22,6 +22,20 @@ Node<int>* takeInput(){
   return head;
 }
 
+void insert(Node<int>*head, int i, int data){
+  Node<int>* temp = head;
+  int count  = 1;
+  while(temp!=NULL && count < i){
+    temp = temp->next;
+    count++;
+  }
+  if(temp != NULL){
+    Node<int>* newNode = new Node<int>(data);
+    newNode->next = temp->next;
+    temp->next = newNode;
+  }
+}
+
 void printLL(Node<int>* head){
   Node<int>* temp = head;
   while(temp){
@@ -41,6 +55,7 @@ int main(){
   // child2->next = child3;
 
   Node<int>*head = takeInput();
+  insert(head, 4, 99);
   printLL(head);
 
   return 0;
